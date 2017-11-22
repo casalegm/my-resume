@@ -1,0 +1,36 @@
+{% extends "base.html"%}
+{% block title %}Add Courses{% endblock %}
+{% block page_content%}
+<!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-music" aria-hidden="true"></i> Add Courses:</h1>
+    <form action="/course/add" method="post">
+      <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="title" placeholder="Title of Course" required="true">
+      </div>
+      <div class="form-group">
+        <label>Course Number</label>
+        <input class="form-control" type="text" name="number" placeholder="Course Number" required="true">
+      </div>
+      <div class="form-group">
+        <label>Professor</label>
+        <select class="form-control" name="professor">
+          {% for professor in professors %}
+              <option>{{professor.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        Professor not in the list? <a href="/professor/add" class="btn btn-success" role="button" aria-disabled="true">Add Professor</a>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" name="description" placeholder="description" required="true"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Course</button>
+    </form>
+  </div>
+
+{% endblock%}
